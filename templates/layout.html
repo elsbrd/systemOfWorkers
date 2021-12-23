@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<!--        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+
+<!--        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
+<!--        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>-->
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">To buy a work website</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+<!--                <li>-->
+<!--                    <a href="/">Home</a>-->
+<!--                </li>-->
+                {% if session.get('user_id') != None %}
+                <li>
+                    <a href="/logout">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+                <li>
+                    <a href="/register">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+     <!-- NAVIGATION  -->
+
+
+
+</nav>
+<div class="container">
+    {% block content %} {% endblock %}
+</div>
+
+    <div class="container pt-4">
+      {% block body %}
+      {% endblock %}
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="http://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>
+
+<link href="http://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="http://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>
+<link href="http://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css"
+      rel="stylesheet">
+
+<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<!--<script>-->
+<!--$(document).ready(function(){-->
+<!--    $('#country').editableSelect();-->
+<!--    $('#name').editableSelect();-->
+<!--    $('#country').editableSelect();-->
+<!--    $('#sample_form').on('submit', function(event){-->
+<!--        event.preventDefault();-->
+<!--        if($('#name').val() == '') {-->
+<!--           alert("Enter Name");-->
+<!--           return false;-->
+<!--        }else if($('#country').val() == ''){-->
+<!--           alert("Select Country");-->
+<!--           return false;-->
+<!--        }else{-->
+<!--           $.ajax({-->
+<!--                url:"/insert",-->
+<!--                method:"POST",-->
+<!--                data:$(this).serialize(),-->
+<!--                success:function(data)-->
+<!--                {-->
+<!--                 alert(data);-->
+<!--                 $('#sample_form')[0].reset();-->
+<!--                }-->
+<!--           });-->
+<!--        }-->
+<!--    });-->
+<!--});-->
+<!--</script>-->
+
+<script>
+$(document).ready(function(){
+    $('#selectWork').editableSelect();
+    $('#technology').editableSelect();
+    $('#sample_form').on('submit', function(event){
+        event.preventDefault();
+        if($('#name').val() == '') {
+           alert("Enter Name");
+           return false;
+        }
+        if($('#selectWork').val() == ''){
+           alert("Select Work");
+           return false;
+        }
+        if($('#technology').val() == ''){
+           alert("Technology");
+           return false;
+        }
+        if($('#expireTime').val() == '') {
+           alert("Expire Time");
+           return false;
+        }
+           $.ajax({
+                url:"/insert",
+                method:"POST",
+                data:$(this).serialize(),
+                dataType:"json",
+                success:function(data)
+                {
+                 alert(data.message);
+
+                 $('#sample_form')[0].reset();
+                }
+<!--                error:function (jqXHR, exception) {-->
+<!--                    if (jqXHR.status == 500) {-->
+<!--                        alert( 'Internal Server Error [500].' + JqXHR.responseText.messageF );-->
+<!--                    }-->
+<!--                }-->
+
+         });
+    });
+});
+</script>
+
+
+<script>
+const btnDelete= document.querySelectorAll('.btn-delete');
+if(btnDelete) {
+  const btnArray = Array.from(btnDelete);
+  btnArray.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      if(!confirm('Are you sure you want to delete it?')){
+        e.preventDefault();
+      }
+    });
+  })
+}
+
+$(document).ready(function() {
+    $('#example').DataTable({
+      "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+        "iDisplayLength": 3
+       }
+    );
+} );
+
+</script>
+<style> textarea {resize: none; height: 200px !important; }</style>
+
+<script>
+
+    $('#sample_form').on('submit', function(event){
+        event.preventDefault();
+        if($('#name').val() == '') {
+           alert("Enter Name");
+           return false;
+        }
+        if($('#selectWork').val() == ''){
+           alert("Select Work");
+           return false;
+        }
+        if($('#technology').val() == ''){
+           alert("Technology");
+           return false;
+        }
+        if($('#expireTime').val() == '') {
+           alert("Expire Time");
+           return false;
+        }
+           $.ajax({
+                url:"/insert",
+                method:"POST",
+                data:$(this).serialize(),
+                dataType:"json",
+                success:function(data)
+                {
+                 alert(data.message);
+
+                 $('#sample_form')[0].reset();
+                }
+<!--                error:function (jqXHR, exception) {-->
+<!--                    if (jqXHR.status == 500) {-->
+<!--                        alert( 'Internal Server Error [500].' + JqXHR.responseText.messageF );-->
+<!--                    }-->
+<!--                }-->
+
+         });
+    });
+});
+</script>
+</body>
+</html>

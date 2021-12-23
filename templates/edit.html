@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+<!--<div class="container pt-4">-->
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card card-body">
+            <form action="/update/{{order.order_id}}" method="POST">
+                <div class="form-group">
+                    <label>description</label>
+                    <textarea class="form-control" id="description" name="description" maxlength="1000">{{order.description}}</textarea>
+                    <!--                    <input type="text" class="form-control" name="description">-->
+                </div>
+                <!--                <div class="form-group">-->
+                <!--                    <label>date_posted</label>-->
+                <!--                    <input type="datetime-local" class="form-control" name="date_posted">-->
+                <!--                </div>-->
+                <div class="form-group">
+                    <label>deadline_date</label>
+                    <input value="{{order.deadline_date}}" type="datetime-local" class="form-control"
+                           name="deadline_date">
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input value="{{order.price}}" type="text" class="form-control" name="price">
+                </div>
+                <div class="form-group">
+                    <!--            <input type="text" class="form-control" name="selectWork" placeholder="Select Work">-->
+                   <label>work_type_id</label>
+
+                    <select name="work_type_id" id="work_type_id" class="form-control">
+                        {% for row in work_typeslist %}
+                        {% if order.work_type_id == row.work_type_id%}
+                        <option value="{{row.work_type_id}}" selected>{{row.work_type}}</option>
+                        {% else %}
+                        <option value="{{row.work_type_id}}" >{{row.work_type}}</option>
+                        {% endif %}
+
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>technologies_name</label>
+                    <select name="technologies_id" id="technologies_id" class="form-control">
+                        {% for row in technologieslist %}
+                        {% if order.technologies_id == row.technologies_id%}
+                        <option value="{{row.technologies_id}}" selected>{{row.technologies_name}}</option>
+                        {% else %}
+                        <option value="{{row.technologies_id}}">{{row.technologies_name}}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                    <!--            <input type="text" class="form-control" name="technology" placeholder="Technology">-->
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Update
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container">
+    <br/>
+    <h2 align="center">Welcome to the website</h2><br/>
+<!--    <h2 align="center">Buying a Work</h2><br/>-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-3"></div>-->
+<!--        <div class="col-md-6">-->
+<!--            <form method="post" id="sample_form">-->
+<!--                <div class="form-group">-->
+<!--                    <label>Enter Name</label>-->
+<!--                    <input type="text" name="name" id="name" class="form-control">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="email">Email:</label>-->
+<!--                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label>Select Work</label>-->
+<!--                    <select name="selectWork" id="selectWork" class="form-control">-->
+<!--                        {% for row in selectWorklist %}-->
+<!--                        <option value="{{row.selectWork}}">{{row.selectWork}}</option>-->
+<!--                        {% endfor %}-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label>Technology</label>-->
+<!--                    <select name="technology" id="technology" class="form-control">-->
+<!--                        {% for row in technologylist %}-->
+<!--                        <option value="{{row.technology}}">{{row.technology}}</option>-->
+<!--                        {% endfor %}-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label>Expire Time</label>-->
+<!--                    <input type="text" name="expireTime" id="expireTime" class="form-control">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label>Price</label>-->
+<!--                    <input type="text" name="price" id="price" class="form-control">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="submit" name="Save" id="save" class="btn btn-success" value="Save"/>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+{% endblock %}
